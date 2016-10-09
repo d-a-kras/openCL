@@ -79,6 +79,13 @@ int main()
 	clGetPlatformIDs(1, &PlatformID, NULL);
 
 	clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_CPU, 1, &DeviceID, NULL);
+	char s[100];
+	size_t abc = 0;
+	clGetDeviceInfo(DeviceID, CL_DEVICE_NAME, 400, (void*)&s, &abc);
+	cout << abc << endl;
+	//system("pause");
+	cout << s<< endl;
+	
 
 	Context = clCreateContext(NULL, 1, &DeviceID, NULL, NULL, &ret);
 	cout<<ret<<" 1"<<endl;

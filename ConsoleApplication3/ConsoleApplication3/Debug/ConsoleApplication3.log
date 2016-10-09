@@ -1,4 +1,4 @@
-﻿Сборка начата 09.10.2016 18:37:39.
+﻿Сборка начата 09.10.2016 18:46:01.
      1>Проект "C:\Users\НИРС\Documents\GitHub\openCL\ConsoleApplication3\ConsoleApplication3\ConsoleApplication3.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\ConsoleApplication3.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ConsoleApplication3.cpp
@@ -15,4 +15,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:01.09
+Затраченное время: 00:00:01.19

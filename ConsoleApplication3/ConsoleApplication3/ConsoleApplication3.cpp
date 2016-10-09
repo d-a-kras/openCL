@@ -76,27 +76,21 @@ int main()
 
 	size_t FileSize = GetSizeFile(FileName);
 	char *KernelSource = GetKernelSource(FileName, FileSize);
-
 	clGetPlatformIDs(1, &PlatformID, NULL);
 
-	clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_GPU,1,&DeviceID,&ret_uint);
-
-	char s[100];
-	size_t abc = 0;
-	clGetDeviceInfo(DeviceID, CL_DEVICE_NAME, 400, (void*)&s, &abc);
-	cout << s << endl;
+	clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_GPU, 1, &DeviceID, NULL);
 
 	Context = clCreateContext(NULL, 1, &DeviceID, NULL, NULL, &ret);
-	cout<<ret<<" 1"<<endl;
+	//cout<<ret<<endl;
 	queue = clCreateCommandQueue(Context, DeviceID, 0, NULL);
 	Program = clCreateProgramWithSource(Context, 1, (const char **)&KernelSource, (const size_t *)&FileSize, &ret);
-	cout<<ret<<" 2"<<endl;
+	//cout<<ret<<endl;
 	clBuildProgram(Program, 1, &DeviceID, NULL, NULL, &ret);
-	cout<<ret<<" 3"<<endl;
+	//cout<<ret<<endl;
 
 	cl_kernel kernel = clCreateKernel(Program, "test", &ret);
-
-	cout << ret<<" 4" << endl;
+	cout << ret << endl;
+	system("pause");
 
 
 

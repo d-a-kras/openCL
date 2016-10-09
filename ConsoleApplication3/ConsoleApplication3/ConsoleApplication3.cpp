@@ -1,6 +1,5 @@
 #define CL_USE_DEPRECATED_OPENCL_1_2_APIS
 #include "stdafx.h"
-#pragma warning (disable : 4996)
 #include <CL\cl.h>
 #include <fstream>
 #include <iostream>
@@ -64,6 +63,7 @@ void Init_data(float *data, float *exact, float *F)
 int main()
 {
 	cl_int ret = 0;
+	cl_uint ret_uint = 0;
 	srand(time(NULL));
 	int boolean = 0;
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,16 +76,15 @@ int main()
 
 	size_t FileSize = GetSizeFile(FileName);
 	char *KernelSource = GetKernelSource(FileName, FileSize);
+
 	clGetPlatformIDs(1, &PlatformID, NULL);
 
-	clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_GPU, NULL, &DeviceID, (cl_uint*)2);
+	clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_GPU,1,&DeviceID,&ret_uint);
+
 	char s[100];
 	size_t abc = 0;
 	clGetDeviceInfo(DeviceID, CL_DEVICE_NAME, 400, (void*)&s, &abc);
-	cout << abc << endl;
-	//system("pause");
-	cout << s<< endl;
-	
+	cout << s << endl;
 
 	Context = clCreateContext(NULL, 1, &DeviceID, NULL, NULL, &ret);
 	cout<<ret<<" 1"<<endl;
@@ -95,7 +94,7 @@ int main()
 	clBuildProgram(Program, 1, &DeviceID, NULL, NULL, &ret);
 	cout<<ret<<" 3"<<endl;
 
-	cl_kernel kernel = clCreateKernel(Program, "test1", &ret);
+	cl_kernel kernel = clCreateKernel(Program, "test", &ret);
 
 	cout << ret<<" 4" << endl;
 
@@ -136,7 +135,7 @@ int main()
 
 
 		clGetKernelWorkGroupInfo(kernel, DeviceID, CL_KERNEL_WORK_GROUP_SIZE, sizeof(size_t), &group, NULL);
-		clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &count, &group, 0, NULL, NULL);
+		clEnqueueNDRangeKernel(queue, kernel, 1, NULL,(const size_t*)&count, &group, 0, NULL, NULL);
 		clFinish(queue);
 		if (iteration % 2 == 0)
 		{
@@ -208,7 +207,8 @@ int GetSizeFile(const char *FileName)
 }
 char *GetKernelSource(const char *FileName, size_t FileSize)
 {
-	FILE *FileKernel = fopen(FileName, "r");;
+	FILE *FileKernel;
+	fopen_s(&FileKernel, FileName, "r");
 	char *source_str = new char[FileSize];
 	fread(source_str, sizeof(char), FileSize, FileKernel);
 	fclose(FileKernel);

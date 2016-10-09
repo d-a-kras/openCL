@@ -68,13 +68,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\include\CL;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\Win32;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\lib\x86;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.5\lib\Win32;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.5\bin;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\include\CL;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\lib\x86;C:\Program Files %28x86%29\Intel\OpenCL SDK\6.1\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\НИРС\Documents\GitHub\openCL\ConsoleApplication3\ConsoleApplication3\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\НИРС\Documents\GitHub\openCL\ConsoleApplication3\ConsoleApplication3;$(IncludePath)</IncludePath>
+    <ExecutablePath>C:\Users\НИРС\Documents\GitHub\openCL\ConsoleApplication3\ConsoleApplication3\bin;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -161,6 +163,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.cl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -78,7 +78,18 @@ int main()
 	char *KernelSource = GetKernelSource(FileName, FileSize);
 	clGetPlatformIDs(1, &PlatformID, NULL);
 
+<<<<<<< HEAD
 	clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_GPU, 1, &DeviceID, NULL);
+=======
+	clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_GPU,1, &DeviceID, NULL);
+	char s[100];
+	size_t abc = 0;
+	clGetDeviceInfo(DeviceID, CL_DEVICE_NAME, 400, (void*)&s, &abc);
+	cout << abc << endl;
+	//system("pause");
+	cout << s<< endl;
+	
+>>>>>>> f8c92efc2df4ff9b0eda6aae286bf87288ce7acf
 
 	Context = clCreateContext(NULL, 1, &DeviceID, NULL, NULL, &ret);
 	//cout<<ret<<endl;
